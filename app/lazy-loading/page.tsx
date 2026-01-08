@@ -17,6 +17,12 @@ berat (misalnya Peta/Map, Chart, atau Editor Teks) yang tidak perlu di-load saat
 pertama dibuka.
   */
 // ssr false -> berguna jika librarynya butuh akses window (client side)
+/* 
+  disini pake dynamic buat implementasi langsung lazy loadingnya. Jadi sebenernya
+  kalo kita import biasa di atas danpa dynamic itu browser bakal download semua yang ada 
+  disini termasuk komponen yang di import, tapi kalo pake dynamic, browser cuma bakal
+  download si komponen yang di import itu setelah si komponen emng di trigger buat di load.
+*/
 const HeavyChart = dynamic(
   () => import("@/components/views/LazyLoading/HeavyChart"),
   {
